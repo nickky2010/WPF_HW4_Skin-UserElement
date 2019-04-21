@@ -5,8 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_HW4_Skin_UserElement"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Weight Calculator" Name="windowWeightCalculator" Height="450" Width="500" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Name="lightDictionary" 
+                                    Source="LightSkin.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Name="labelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Name="textboxStyle" TargetType="TextBox" >
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Foreground" Value="DarkBlue"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="DarkBlue"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <TabControl Style="{DynamicResource TabControlStyle}">
+        <TabItem Header="Calculate" >
+            <DockPanel Name="dockPanelCalculate">
+                <DockPanel.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="contextMenuItemColor" Header="Color" Click="ContextMenuItemColor_Click"/>
+                        <MenuItem Name="contextMenuItemFont" Header="Font" Click="ContextMenuItemFont_Click"/>
+                    </ContextMenu>
+                </DockPanel.ContextMenu>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="15" DockPanel.Dock="Top">
+                    <Button Name="buttonLightSkin" Content="Light skin" Click="ButtonLightSkin_Click" Style="{DynamicResource ButtonStyle}"/>
+                    <Button Name="buttonDarkSkin" Content="Dark skin" Click="ButtonDarkSkin_Click" Style="{DynamicResource ButtonStyle}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="15" DockPanel.Dock="Top">
+                    <Label Name="labelWeight" Content="Your weight = "/>
+                    <TextBox Name="textBoxWeight" Width="100" VerticalContentAlignment="Center"/>
+                    <Label Name="labelHeight" Content="Your height = " Margin="50,0,0,0"/>
+                    <TextBox Name="textBoxHeight" Width="100" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="15" DockPanel.Dock="Top">
+                    <Label Name="labelRecommendations" Content="Recommendations"/>
+                    <TextBox Name="textBoxRecommendations" Width="310" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="positiv.jpg" HorizontalAlignment="Left" Width="250"/>
+                    <Button x:Name="buttonAdvice" Content="Get advice" Click="ButtonAdvice_Click" Style="{DynamicResource ButtonStyle}" Width="138" Margin="50,21,10,126.2" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-33.4"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="About author" >
+            <FlowDocumentScrollViewer IsToolBarVisible="True">
+                <FlowDocument IsOptimalParagraphEnabled="True" Name="flowDoc">
+                    <Paragraph Foreground="Blue">
+                        Manko Nickolas
+                    </Paragraph>
+                    <List MarkerStyle="Square">
+                        <ListItem>
+                            <Paragraph >C/C++, C#, WinForms, WPF, Git</Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>Communicability</Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>Special love for Entity Framework Core v.2.0 and mapping entities</Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph>
+                        Photo:
+                        <LineBreak/>
+                        <Image Name="imagePhoto"/>
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </TabItem>
+
+    </TabControl>
 </Window>

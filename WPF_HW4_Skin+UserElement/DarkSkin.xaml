@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPF_HW4_Skin_UserElement">
+    <Style TargetType="Button" x:Key="ButtonStyle">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Background" Value="DarkKhaki"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.5" 
+                                         Storyboard.TargetProperty="FontSize" 
+                                         To="25"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.5" 
+                                         Storyboard.TargetProperty="FontSize" 
+                                         To="20"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Window" x:Key="WindowStyle">
+        <Style.Setters>
+            <Setter Property="Background" Value="DarkSeaGreen"/>
+        </Style.Setters>
+    </Style>
+    <Style TargetType="TabControl" x:Key="TabControlStyle">
+        <Style.Setters>
+            <Setter Property="Background" Value="DarkGreen"/>
+        </Style.Setters>
+    </Style>
+
+</ResourceDictionary>
